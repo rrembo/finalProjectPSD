@@ -47,4 +47,6 @@ void cekLulus(int);
 void main(){
 
 
+	
+return 0;
 }
