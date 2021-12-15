@@ -46,7 +46,81 @@ void cekLulus(int);
 
 void main(){
 
+void deleteMahasiswa(){
 
+	struct node *bantu, *hapus;
+
+	if(head==NULL){
+		puts("==========================================================");
+		puts(" --> Data Sedang Kosong");
+		return;
+	}
+
+	int delNim;
+	system("cls");
+	header();
+
+	puts("|               HAPUS DATA MAHASISWA BARU                |");
+	puts("==========================================================");
+	printf(" --> Masukan NIM Mahasiswa : ");
+	scanf("%d",&delNim);
+	puts("==========================================================");
+
+
+	int cek;
+	cek=0;
+
+		bantu=head;
+
+		while(bantu!=NULL){
+			if(bantu->nim==delNim){
+				hapus=bantu;
+
+				if(bantu->prev==NULL&&bantu->next==NULL){
+					head=NULL;
+				}
+
+				else if(bantu->prev==NULL){
+					head=head->next;
+					head->prev=NULL;
+				}
+
+				else if(bantu->next==NULL){
+					bantu->prev->next=NULL;
+				}
+
+				else{
+					hapus->prev->next=bantu->next;
+					hapus->next->prev=bantu->prev;
+				}
+
+				free(hapus);
+				cek=1;
+				puts(" --> Data Berhasil Dihapus");
+			}
+			bantu=bantu->next;
+		}
+
+	if(cek==0){
+		puts(" --> NIM Tidak Ditemukan");
+	}
+
+
+}
+
+void editMahasiswa(){
+	struct node*bantu;
+	int editNim, cek;
+	
+	if(head==NULL){
+		puts("==========================================================");
+		puts(" --> Data Sedang Kosong");
+		return;
+	}
+	
+	cek=0;
+	system("cls");
+	header();
 	
 return 0;
 }
